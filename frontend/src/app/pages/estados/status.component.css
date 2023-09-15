@@ -1,0 +1,9 @@
+.card-container-status {
+  padding: 3rem;
+}
+
+@media (max-width: 1490px) {
+  .card-container-status {
+    padding: 1.25rem;
+  }
+}

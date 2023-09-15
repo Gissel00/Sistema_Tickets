@@ -1,0 +1,58 @@
+<main class="main-content mt-4">
+  <section>
+    <form [formGroup]="ticketForm" (submit)="onSubmitTicket()" class="form-group bg-light rounded form-style ">  
+      <header class="text-light bg-primary header-form">
+        <h3 class="text-center">Crear Ticket</h3>
+      </header>
+      <section class="p-4">
+        <div class="grid-container">
+          <div>
+            <label class="form-label" for="prioritiesList">
+              <i class="fa fa-list-ol" aria-hidden="true" style="font-size: .9rem; margin-right: .5rem;" ></i>Prioridad:
+              <select formControlName="prioritiesSelect" class="form-select select-style" id="prioritiesList">
+                <option *ngFor="let priority of priorities" [value]="priority" class="option-style">
+                  <p> {{ priority }} </p>
+                </option>
+              </select>
+            </label>
+          </div>
+  
+          <div>
+            <label class="form-label" for="categoriesList">
+              <i class="fa fa-cogs" aria-hidden="true" style="font-size: .9rem; margin-right: .5rem;" ></i>Categorias:
+              <select formControlName="categoriesSelect" class="form-select select-style" id="categoriesList">
+                <option class="option-style" *ngFor="let category of categories" [value]="category">
+                  <p> {{ category }} </p>
+                </option>
+              </select>
+            </label>
+          </div>
+  
+  
+          <div>
+            <label class="form-label" for="flujosList">
+              <i class="fa fa-sort-amount-asc" aria-hidden="true" style="font-size: .9rem; margin-right: .5rem;"></i>Flujo:
+              <select formControlName="flujosSelect" class="form-select select-style" id="flujosList">
+                <option class="option-style" *ngFor="let flujo of flujos" [value]="flujo">
+                  <p class="option-text"> {{ flujo }} </p>
+                </option>
+              </select>
+            </label>
+          </div>
+  
+        </div>
+        <label class="form-label" for="asunto">
+          <i class="fa fa-envelope-open" aria-hidden="true" style="font-size: .9rem; margin-right: .5rem;"></i>Asunto:
+          <input formControlName="asunto" class="form-control mb-3 mt-2" type="text" id="asunto" />
+        </label>
+        <label>
+          <i class="fa fa-pencil" aria-hidden="true" style="font-size: .9rem; margin-right: .5rem;"></i>Contenido:
+          <textarea formControlName="contenido" class="form-control mb-3 mt-2" style="height: 200px"></textarea>
+        </label>
+        <section class="d-flex justify-content-center w-100">
+          <button class="btn btn-lg btn-primary mb-2" type="submit">Crear Ticket</button>
+        </section>
+      </section>
+    </form>
+  </section>
+</main>

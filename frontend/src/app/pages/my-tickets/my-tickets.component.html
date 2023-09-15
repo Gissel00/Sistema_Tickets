@@ -1,0 +1,42 @@
+<div style="background-color:  #f2f2f2;">
+  <br>
+ </div>
+<div class="banner">
+  <h3 class="text-banner">Tickets</h3>
+</div>
+<div style="background-color:  #f2f2f2;">
+  <br>
+ </div>
+<div class="container">
+
+  <div class="card border-0 shadow centered-page">
+  
+
+  <div class="card-body"> 
+    <div style="padding-bottom: 1rem;">
+      <p-dropdown [style]="{'minWidth':'30%'}" 
+        [options]="statuses"
+        [(ngModel)]="selectedStatus"
+        placeholder="Estados"
+        optionLabel="nombre"
+        [showTransitionOptions]="'200ms'"
+        [hideTransitionOptions]="'200ms'"
+        [showClear]="true"
+        scrollHeight="300px"
+      >
+      </p-dropdown>
+    </div>
+
+    <div class="table-container overflow-auto">
+      <section class="table-responsive-md table-sm table-custom-style">
+        <app-table
+          [columns]="columns"
+          [data]="filterByStatus()"
+          [classes]="'table table-bordered table-striped table-hover'"
+        ></app-table>
+      </section>
+    </div>
+    
+  </div>
+</div>
+

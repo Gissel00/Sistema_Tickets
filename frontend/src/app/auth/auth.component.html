@@ -1,0 +1,103 @@
+<div class="content-login">
+  <div class="auth-page">
+    <div>
+      <div>
+        <div class="bg-light rounded p-3">
+          <!-- <h1 class="text-center">Dynamic Incident System | DIS</h1> -->
+          <div style="margin: .5rem 10rem"> 
+            <img src="../../assets/ransa.jpg" alt="logo-dis" style="width: 100%; height: 90px; object-fit: cover;" />
+          </div>
+          <h4 class="text-center">{{ title }}</h4>
+          <app-list-errors [errors]="errors"></app-list-errors>
+          <form [formGroup]="authForm" (ngSubmit)="handleOnSubmitForm()" ngModel=>
+            <fieldset [disabled]="isSubmitting">
+              <fieldset class="form-group">
+                <input
+                  formControlName="names"
+                  placeholder="Names"
+                  class="form-control form-control-lg"
+                  type="text"
+                  *ngIf="authType == 'register'"
+                  name="names"
+                  [(ngModel)]="newRequestUser.names"
+                />
+              </fieldset>
+              <fieldset class="form-group">
+                <input
+                  formControlName="lastNames"
+                  placeholder="LastNames"
+                  class="form-control form-control-lg"
+                  type="text"
+                  *ngIf="authType == 'register'"
+                  name="lastNames"
+                  [(ngModel)]="newRequestUser.lastNames"
+                />
+              </fieldset>
+              <fieldset class="form-group mb-2">
+                <input
+                  formControlName="email"
+                  placeholder="Email"
+                  class="form-control form-control-lg"
+                  type="text"
+                  name="email"
+                  [(ngModel)]="newRequestUser.email"
+                />
+              </fieldset>
+              <fieldset *ngIf="authType === 'register'" class="form-group mb-2">
+                <input
+                  formControlName="telefono"
+                  placeholder="Telefono"
+                  class="form-control form-control-lg"
+                  type="text"
+                  name="telefono"
+                  [(ngModel)]="newRequestUser.telefono"
+                />
+              </fieldset>
+              <fieldset class="form-group mb-2">
+                <input
+                  formControlName="password"
+                  placeholder="Password"
+                  class="form-control form-control-lg"
+                  type="password"
+                  name="password"
+                  [(ngModel)]="newRequestUser.password"
+                />
+              </fieldset>
+              <div class="role-container" *ngIf="authType === 'register'" >
+                <section class="role-user-container">
+                  <label class="form-check-label d-flex flex-column" for="usuario">
+                    Usuario
+                    <input type="checkbox" class="form-check-input" id="usuario" (change)="onChangeUser($event)" [value]="isUser" *ngIf="!isAdministrator" />
+                  </label>
+                </section>
+                <section class="d-flex flex-column align-items-center">
+                  <label class="form-check-label d-flex flex-column" for="administrador">
+                    Administrador
+                    <input type="checkbox" class="form-check-input" id="administrador" (change)="onChangeAdministrator($event)" [value]="isAdministrator" *ngIf="!isUser" />
+                  </label>
+                </section>
+              </div>
+              <div class="d-flex flex-column">
+                <button
+                  class="btn btn-lg btn-primary mb-2"
+                  [disabled]="!authForm.valid"
+                  type="submit"
+                >
+                  {{ title }}
+                </button>
+                <p class="text-xs-center align-self-center">
+                  <a [routerLink]="['/login']" *ngIf="authType == 'register'"
+                    >Have an account?</a
+                  >
+                  <a [routerLink]="['/register']" *ngIf="authType == 'login'"
+                    >Need an account?</a
+                  >
+                </p>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

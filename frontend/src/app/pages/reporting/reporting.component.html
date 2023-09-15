@@ -1,0 +1,99 @@
+<div style="background-color:  #f2f2f2;">
+  <br>
+ </div>
+<div class="banner">
+  <h3 class="text-banner">Reportes</h3>
+</div>
+<div style="background-color:  #f2f2f2;">
+  <br>
+ </div>
+<div class="container" style="overflow: visible;">
+  <div class="card border-0 shadow centered-page">
+    <div class="card-body p-3 overflow-auto" style="height: 67%;">
+      <main class="reporting-container">
+        <header class="header-container-filters">
+          <div class="d-flex flex-column">
+            <p-calendar [(ngModel)]="dateStart" [showTime]="true" [showSeconds]="true" inputId="time" appendTo="body" placeholder="Fecha Inicio"></p-calendar>
+          </div>
+          <div class="d-flex flex-column">
+            <p-calendar [(ngModel)]="dateEnd" [showTime]="true" [showSeconds]="true" inputId="time" appendTo="body" placeholder="Fecha Final"></p-calendar>
+          </div>
+          <div class="d-flex justify-content-end align-items-end">
+            <button pButton pRipple type="button" label="Generar Reporte" class="p-button-raised p-button-info"
+              (click)="onGenerateReport($event)"></button>
+          </div>
+        </header>
+        <section class="mt-2 overflow-auto">
+          <p-panel header="Por Tickets" styleClass="mb-3" [toggleable]="true">
+            <div>
+              <p-table [value]="data" [paginator]="true" [rows]="5">
+                <ng-template pTemplate="header">
+                  <tr style="font-size: small;">
+                    <th>Ticket Id</th>
+                    <th>Creador</th>
+                    <th>Asignado</th>
+                    <th>Creado</th>
+                    <th>Completado</th>
+                    <th>Tiempo Estimado Resolucion</th>
+                    <th>Tiempo Resolucion Horas de Negocio</th>
+                    <th>Tiempo Real Resolucion</th>
+                    <th>SLA</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-data>
+                  <tr style="font-size: small;">
+                    <td>{{data.ticketId}}</td>
+                    <td style="width: 150px;">{{data.email_creador}}</td>
+                    <td>{{data.asignado}}</td>
+                    <td>{{data.fechaCreacion}}</td>
+                    <td>{{data.fechaCompletado}}</td>
+                    <td style="width: 170px;">{{data.tiempoEstimadoResolucion}}</td>
+                    <td style="width: 150px">{{data.tiempoResolucionHorasOficina}}</td>
+                    <td style="width: 150px">{{data.tiempoRealResolucion}}</td>
+                    <td style="width: 100px;">{{data.percentageSLA}}</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+            <div class="d-flex justify-content-center align-items-end" style="padding-top: 1rem;">
+              <button pButton pRipple type="button" label="Descargar" class="p-button-raised p-button-info"
+                (click)="exportTicketReport()"></button>
+            </div>
+          </p-panel>
+          <p-panel header="Por Departamentos" [toggleable]="true">
+            <div class="">
+              <p-table [value]="dataByDepto" [paginator]="true" [rows]="4">
+                <ng-template pTemplate="header">
+                  <tr style="font-size: small;">
+                    <th>Ticket Id</th>
+                    <th>Creador</th>
+                    <th style="width: 130px;">Asignado</th>
+                    <th>Creado</th>
+                    <th>Completado</th>
+                    <th>Departamento</th>
+                    <th>Tiempo Real Resolucion</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-dataByDepto>
+                  <tr style="font-size: small;">
+                    <td>{{dataByDepto.ticketId}}</td>
+                    <td style="width: 150px;">{{dataByDepto.email_creador}}</td>
+                    <td style="width: 150px;">{{dataByDepto.asignado}}</td>
+                    <td>{{dataByDepto.fechaCreacion}}</td>
+                    <td>{{dataByDepto.fechaCompletado}}</td>
+                    <td>{{dataByDepto.nombreDepartamento}}</td>
+                    <td style="width: 150px">{{dataByDepto.tiempoRealResolucion}}</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+            <div class="d-flex justify-content-center align-items-end" style="padding-top: 1rem;">
+              <button pButton pRipple type="button" label="Descargar" class="p-button-raised p-button-info"
+                (click)="exportTicketByDepartmentReport()"></button>
+            </div>
+          </p-panel>
+        </section>
+      </main>
+    </div>
+  </div>
+</div>

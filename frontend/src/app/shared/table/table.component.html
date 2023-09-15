@@ -1,0 +1,72 @@
+<table [class]="classes" *ngIf="data.length > 0">
+  <thead class="text-center">
+    <tr>
+      <th scope="col" *ngFor="let column of columns" [ngStyle]="{'width': column.width}" >{{ column.name }}</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr *ngFor="let row of data">
+      <td *ngFor="let column of columns">
+        <ng-container
+          *ngIf="
+            (evaluateIsUndefined(column.hasEditButton) &&
+              !column.hasEditButton) ||
+            (evaluateIsUndefined(column.hasRemoveButton) &&
+              !column.hasRemoveButton)
+          "
+        >
+          <a *ngIf="evaluateArray(column.routeLink) && column.key == '_id' " [routerLink]="[column.routeLink![0], row[column.key]]" > {{ row[column.key].toString().padStart(4,"0") }} </a>
+          <p *ngIf="evaluateIsUndefined(column.routeLink)" > {{ row[column.key] }} </p>
+        </ng-container>
+        <div [ngStyle]="actionsContainer">
+          <div
+            *ngIf="
+              !evaluateIsUndefined(column.hasCreateButton) && column.hasCreateButton
+            "
+          >
+            <button
+              pButton
+              type="button"
+              pTooltip="Agregar"
+              tooltipPosition="bottom"
+              [icon]="column.createIcon!"
+              class="p-button-rounded p-button-success p-button-text"
+              (click)="column.create!()"
+            ></button>
+          </div>
+          <div
+            *ngIf="
+              !evaluateIsUndefined(column.hasEditButton) && column.hasEditButton
+            "
+          >
+            <button
+              pButton
+              pTooltip="Editar"
+              tooltipPosition="bottom"
+              type="button"
+              [icon]="column.editIcon!"
+              class="p-button-rounded p-button-text"
+              (click)="column.edit!(row)"
+            ></button>
+          </div>
+          <div
+            *ngIf="
+              !evaluateIsUndefined(column.hasRemoveButton) &&
+              column.hasRemoveButton
+            "
+          >
+            <button
+              pButton
+              pTooltip="Eliminar"
+              tooltipPosition="bottom"
+              type="button"
+              [icon]="column.removeIcon!"
+              class="p-button-rounded p-button-danger p-button-text"
+              (click)="column.remove!(row)"
+            ></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,95 @@
+<main class="profile-container">
+  <h4 class="title">Perfil de Usuario</h4>
+  <hr>
+  <div class="content">
+    <section class="user-details">
+      <div class="back-image-container">
+        <img loading="lazy" src="https://demos.creative-tim.com/paper-dashboard-angular/assets/img/damir-bosnjak.jpg" alt="back-image" class="back-image" />
+      </div>
+      <div class="user-image-container">
+        <img loading="lazy" [src]="user.userInfo.fotoPerfil" class="user-image" alt="user-image">
+      </div>
+      <div class="user-info">
+        <h4 class="user-name">{{user.userInfo.nombres}} {{user.userInfo.apellidos}} </h4>
+        <p class="user-email">
+          <i class="fa fa-envelope icon" ></i>
+          <span>
+            {{user.userInfo.email}}
+          </span>
+        </p>
+        <p class="user-phone">
+          <i class="fa fa-phone icon"></i>
+          <span>
+            {{user.userInfo.telefono}}
+          </span>
+        </p>
+      </div>
+      <hr>
+      <div class="role">{{user.userInfo.rol}}</div>
+    </section>
+  
+    <aside class="edit-profile overflow-auto">
+      <h4 class="title-form">Editar Perfil</h4>
+      <form (submit)="onUpdateProfile($event)">
+        <section class="grid-container">
+          <div>
+            <div class="" ><h4 class="title-form">Informacion Personal</h4></div>
+            <div>
+              <label class="label-form">Nombres</label>
+              <mat-form-field class="full-width">
+                <mat-label>Nombres</mat-label>
+                <input type="text" matInput placeholder="nombres" [(ngModel)]="userToUpdate.nombres" name="nombres" >
+              </mat-form-field>
+            </div>
+            <div>
+              <label class="label-form">Apellidos</label>
+              <mat-form-field class="full-width">
+                <mat-label>Apellidos</mat-label>
+                <input type="text" matInput placeholder="apellidos" [(ngModel)]="userToUpdate.apellidos" name="apellidos" >
+              </mat-form-field>
+            </div>
+            <div>
+              <label class="label-form">Email</label>
+              <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput placeholder="email" [(ngModel)]="userToUpdate.email" name="email" [disabled]="true">
+              </mat-form-field>
+            </div>
+            <div>
+              <label class="label-form">Telefono</label>
+              <mat-form-field class="full-width">
+                <mat-label>Telefono</mat-label>
+                <input type="text" matInput placeholder="telefono" [(ngModel)]="userToUpdate.telefono" name="telefono" >
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="Password">
+            <div class="mb-2" ><h4 class="title-form">Cambiar Contraseña</h4></div>
+            <div>
+              <label class="label-form">Contraseña Actual</label>
+              <mat-form-field class="full-width">
+                <mat-label>Contraseña Actual</mat-label>
+                <input type="password" matInput placeholder="contraseña actual" [(ngModel)]="userToUpdate.currentPassword" name="currentPassword" >
+              </mat-form-field>
+            </div>
+            <div>
+              <label class="label-form">Contraseña Nueva</label>
+              <mat-form-field class="full-width">
+                <mat-label>Contraseña Nueva</mat-label>
+                <input type="password" matInput placeholder="contraseña nueva" [(ngModel)]="userToUpdate.newPassword" name="newPassword" >
+              </mat-form-field>
+            </div>
+            <div>
+              <label class="label-form">Confirmar Contraseña Nueva</label>
+              <mat-form-field class="full-width">
+                <mat-label>Confirmar Contraseña Nueva</mat-label>
+                <input type="password" matInput placeholder="contraseña nueva" [(ngModel)]="userToUpdate.confirmPassword" name="confirmPassword" >
+              </mat-form-field>
+            </div>
+          </div>
+        </section>
+        <button class="btn-update">Actualizar Perfil</button>
+      </form>
+    </aside>
+  </div>
+</main>

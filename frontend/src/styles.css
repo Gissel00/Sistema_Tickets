@@ -1,0 +1,91 @@
+@import '~normalize.css';
+
+html  {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after  {
+  box-sizing: inherit;
+}
+
+body  {
+  background-color: #f2f2f2;
+  height: 1000px;
+  min-height: 100vh;
+}
+
+
+.container-logo  {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.image-logo  {
+  width: 50px;
+  max-width: 100%;
+  height: 30px;
+}
+
+.content  {
+  width: 100%;
+  height: 100vh;
+}
+
+.main-content  {
+  height: 92vh;
+  display: grid;
+  place-content: center;
+  overflow-y: auto;
+}
+
+.overflow-y-scroll  {
+  overflow-y: auto;
+}
+
+.banner {
+  /* background: rgb(3,13,94);
+  background: linear-gradient(149deg, rgba(3,13,94,1) 0%, rgba(9,9,121,1) 26%, rgba(0,138,255,1) 100%); */
+  /* background-image: url("https://hf-static.s3.amazonaws.com/hf-support-center/sc-workflow-banner.svg"); */
+  background-size: cover;
+  background-position: left;
+  min-height: 15rem; 
+  text-align: center; 
+  align-items: center; 
+  display: flex; 
+  justify-content: center;
+  color: white;
+  text-align: center;
+  background-color: #50d890;
+}
+
+.table-custom-style {
+  max-height: 57vh;
+}
+
+@media (max-width: 1490px) {
+  .banner {
+    background-position: center center;
+    min-height: 10rem;
+  }
+
+  .table-custom-style {
+    max-height: 50vh;
+  }
+}
+
+.centered-page{
+  display: block; height: auto;
+}
+
+.text-banner{
+  font-size: 3rem;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,30 @@
+.auth-page  {
+  border-radius: .8rem;
+  box-shadow: -10px 14px 21px -4px rgba(115,113,113,0.52);
+-webkit-box-shadow: -10px 14px 21px -4px rgba(115,113,113,0.52);
+-moz-box-shadow: -10px 14px 21px -4px rgba(115,113,113,0.52);
+}
+
+.role-container  {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 0rem 4rem 1rem 4rem;
+}
+
+.role-user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.content-login {
+  display: grid;
+  grid-template-columns: auto;
+  place-content: center;
+  gap: 2rem;
+  height: 100vh;
+  margin: 0rem 5rem;
+}

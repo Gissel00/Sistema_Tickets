@@ -1,0 +1,99 @@
+<div style="background-color:  #f2f2f2;">
+  <br>
+ </div>
+<div class="banner">
+  <h3 class="text-banner">Departamentos</h3>
+</div>
+<div style="background-color:  #f2f2f2;">
+  <br>
+ </div>
+<div class="container">
+  <div class="card border-0 shadow centered-page">
+
+  <div class="card-body p-5"> 
+  <section class="table-responsive-md">
+    <app-table [columns]="filteredColums()" [data]="getDepartments" [classes]="'table table-bordered table-striped table-hover'" ></app-table>
+  </section>
+
+  <section>
+    <p-button (onClick)="createNewRecord()">Crear Departamento</p-button>
+  </section>
+
+  <p-dialog
+    [(visible)]="visibleModal"
+    [transitionOptions]="'300ms'"
+    [modal]="true"
+    [header]="header"
+    [draggable]="false"
+  >
+    <form
+      class="form-group p-3 rounded"
+      style="width: 500px; background: #071426;"
+    >
+      <section class="container-fields">
+        <div
+          class="d-flex flex-wrap gap-3 justify-content-center align-items-center"
+        >
+          <div *ngFor="let column of getColumnsByAction()">
+            <label class="form-label item">
+              {{ column.name }}
+              <input
+                class="form-control"
+                type="text"
+                [name]="column.key"
+                [(ngModel)]="getObjectByAction()[column.key]"
+                [ngModelOptions]="{ standalone: true }"
+                [disabled]="column.key === '_id'"
+              />
+            </label>
+          </div>
+        </div>
+      </section>
+    </form>
+    
+    <ng-template pTemplate="footer">
+      <p-button
+        type="button"
+        [label]="label"
+        class="p-button-success"
+        (onClick)="onSubmitGroup()"
+      ></p-button>
+      <button
+        pButton
+        type="button"
+        label="Cancelar"
+        class="p-button-danger"
+        (click)="visibleModal = false"
+      ></button>
+    </ng-template>
+  </p-dialog>
+
+  <p-dialog
+    [(visible)]="deleteModal"
+    transitionOptions="300ms"
+    [modal]="true"
+    [header]="header"
+    [draggable]="false"
+  >
+    {{ message }}
+
+    <ng-template pTemplate="footer">
+      <p-button
+        type="button"
+        [label]="label"
+        class="p-button-danger"
+        (onClick)="onSubmitGroup()"
+      ></p-button>
+      <button
+        pButton
+        type="button"
+        label="Cancelar"
+        class="p-button-secondary"
+        (click)="deleteModal= false"
+      ></button>
+    </ng-template>
+  </p-dialog>
+    </div>
+  </div>
+</div>
+
